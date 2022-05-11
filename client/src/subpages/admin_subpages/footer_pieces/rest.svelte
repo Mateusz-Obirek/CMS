@@ -18,7 +18,7 @@
 </script>
    
     <article class="settingsBox">
-        Kontakt:
+        Contact:
         <textarea cols="30" rows="10" style="max-width:90%" bind:this="{contact}">{settings.footer.contact_footer.trim()}</textarea>
         Copyright:
         <textarea cols="30" rows="10" style="max-width:90%" bind:this="{copyright}">{settings.footer.copyright}</textarea>

@@ -84,12 +84,20 @@
             {#each Object.entries(mainSettings[select]) as [setting, value]}
             {#if setting.includes("color")}
             <tr><td>{setting}</td><td><input type="color"value={value} on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}></td></tr>
-            {:else}
-            {#if setting=='id'}
+            {:else if setting=='id'}
             <tr><td>{setting}</td><td>{value}</td></tr>
+            {:else if setting=="articles_module_amount"}
+            <tr><td>{setting}</td><td><input type="range" value={value} min="1" max="{settings.articles.length}" on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}>{value}</td></tr>
+            {:else if setting=="gallery_minis_amount"}
+            <tr><td>{setting}</td><td><input type="range" value={value} min="1" step="2" max="{settings.gallery.length}" on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}>{value}</td></tr>
+            {:else if setting=="comments_module_amount"}
+            <tr><td>{setting}</td><td><input type="range" value={value} min="1" max="{settings.comments.length}" on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}>{value}</td></tr>
+            {:else if setting=="burger_menu_show" || setting=="slide_duration"}
+            <tr><td>{setting}</td><td><input type="number"value={value} min="0" on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}></td></tr>
+            {:else if setting=="menu_version"}
+            <tr><td>{setting}</td><td><input type="number"value={value} min="0" max="1" on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}></td></tr>
             {:else}
             <tr><td>{setting}</td><td><input type="text"value={value} on:input={e => { console.log(value);console.log(e.target.value);mainSettings[select][setting] = e.target.value}}></td></tr>
-            {/if}
             {/if}
             
             {/each}

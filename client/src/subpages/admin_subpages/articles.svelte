@@ -108,13 +108,13 @@
                 </tr>
             {/each}
         </table>
-        <div>
+        <div class="articlesSettingsBox">
             title<input type="text" bind:value="{article.title}">
             src<input type="text" bind:value="{article.img}">
             intro<input type="text" bind:value="{article.intro}">
             date<input type="date"  bind:value="{article.date}">
             category<input type="text" bind:value="{article.category}">
-            content<textarea id="content">{article.content}</textarea>
+            content<textarea rows="10" id="content">{article.content}</textarea>
             <button on:click="{()=>save()}">Save</button>
         </div>
         <dialog bind:this="{dialog}">

@@ -9,7 +9,7 @@
         
       </script>
       <article class="articles">
-        {#each Array(settings.articles_module_amount) as _,i}
+        {#each Array(settings.articles_module_amount*1) as _,i}
           <Article settings = {settings} article={settings.articles.slice().reverse()[i]} page="a"/>
         {/each}
       </article>
