@@ -3,7 +3,6 @@ from flask_cors import CORS
 import sqlite3
 import json
 
-from soupsieve import select
 
 app = Flask(__name__)
 CORS(app)
