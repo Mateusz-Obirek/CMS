@@ -114,6 +114,14 @@ def getSettings():
     settings["comments"] = comments
     myConnection.close()
 
+    myConnection = sqlite3.connect('./database/comms.sqlite')
+    myConnection.row_factory = sqlite3.Row
+    myCursor = myConnection.cursor()
+    myCursor.execute("SELECT * FROM comms")
+    comments = [dict(row) for row in myCursor.fetchall()]
+    settings["comms"] = comments
+    myConnection.close()
+
     return jsonify(settings)
 
 
@@ -285,6 +293,35 @@ def deleteComment():
     print(id)
     myCursor = myConnection.cursor()
     myCursor.execute("DELETE FROM comments where id = " + id)
+    myConnection.commit()
+    myConnection.close()
+
+@app.route('/addComm', methods=['POST'])
+def addComm():
+    data = request.get_json()
+    comment = data["comment"]
+    print(comment)
+    myConnection = sqlite3.connect('./database/comms.sqlite')
+    myConnection.row_factory = sqlite3.Row
+    myCursor = myConnection.cursor()
+
+    myCursor.execute("INSERT INTO comms VALUES (:id, :username, :content, :art_id)", comment)
+
+    myConnection.commit()
+
+    myConnection.close()
+
+    return {"x": 1}
+
+
+@app.route('/deleteComm', methods=['POST'])
+def deleteComm():
+    data = request.get_json()
+    id = data["id"]
+    myConnection = sqlite3.connect('./database/comms.sqlite')
+    print(id)
+    myCursor = myConnection.cursor()
+    myCursor.execute("DELETE FROM comms where id = " + id)
     myConnection.commit()
     myConnection.close()
 

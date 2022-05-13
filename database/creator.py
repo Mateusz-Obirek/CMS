@@ -1,15 +1,16 @@
 import sqlite3
 
 # tworzenie bazy lub połączenie z istniejącą bazą
-myConnection = sqlite3.connect('additional_headers.sqlite')
+myConnection = sqlite3.connect('comms.sqlite')
 myCursor = myConnection.cursor()
-myCursor.execute("""CREATE TABLE IF NOT EXISTS [additional_headers] (
+myCursor.execute("""CREATE TABLE IF NOT EXISTS [comms] (
 [id] INT NULL,
-[name] VARCHAR NULL,
-[href] VARCHAR NULL
+[username] VARCHAR NULL,
+[content] VARCHAR NULL,
+[art_id] INT NULL
 );""")
 myConnection.commit()
-myCursor.execute("""INSERT INTO additional_headers VALUES
-(0,'Wiedźmin wiki','https://witcher.fandom.com/wiki/Witcher_Wiki');""")
+myCursor.execute("""INSERT INTO comms VALUES
+(1,'Vernon Roche','Nice artykuł',8);""")
 myConnection.commit()
 myConnection.close()

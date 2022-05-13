@@ -12,6 +12,7 @@
     import BurgerMenu from 'svelte-burger-menu';
 	import Admin_articles from "./subpages/admin_subpages/articles.svelte"
 	import Admin_comments from "./subpages/admin_subpages/comments.svelte"
+	import Admin_comms from "./subpages/admin_subpages/comms.svelte"
 	import Admin_footer from "./subpages/admin_subpages/footer.svelte"
 	import Admin_menu from "./subpages/admin_subpages/menu.svelte"
 	import Admin_settings from "./subpages/admin_subpages/settings.svelte"
@@ -19,7 +20,7 @@
 	import Admin_users from "./subpages/admin_subpages/users.svelte"
 	import Admin_gallery from "./subpages/admin_subpages/gallery.svelte"
 
-	let settings = {"setter":0,"allSettings":[],"slider":[],"comments":[],"burger_menu_show":10000,"headers":{"main_headers":[], "additional_headers":[]},"footer":{"main_footers":[],"social_media_footers":[],"contact_footer":"", "copyright":""},"main_elements":[], "articles":[],"gallery":[{"src":"","title":""}]}
+	let settings = {"setter":0,"allSettings":[],"slider":[],"comments":[],"comms":[],"burger_menu_show":10000,"headers":{"main_headers":[], "additional_headers":[]},"footer":{"main_footers":[],"social_media_footers":[],"contact_footer":"", "copyright":""},"main_elements":[], "articles":[],"gallery":[{"src":"","title":""}]}
 	$: innerWidth = 0
   	async function getSettings() {
 		
@@ -124,6 +125,7 @@
 			<Route path="profile/settings"><Admin_settings settings={settings} /></Route>
 			<Route path="profile/users"><Admin_users /></Route>
 			<Route path="profile/comments"><Admin_comments settings={settings} /></Route>
+			<Route path="profile/comms"><Admin_comms settings={settings}/></Route>
 			<Route path="profile/gallery"><Admin_gallery settings={settings} /></Route>
 			<Route path="profile/articles"><Admin_articles settings={settings} /></Route>
 			<Route path="profile/slider"><Admin_slider settings={settings} /></Route>
